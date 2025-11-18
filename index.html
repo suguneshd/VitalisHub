@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitalisHub | Healthcare</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f8faff;
+            color: #445566;
+            line-height: 1.7;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 {
+            color: #0a2540;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #ff8e72;
+            transition: color 0.3s ease;
+        }
+
+        #main-nav {
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eaeaea;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .nav-container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            color: #0a2540;
+            display: inline-block;
+            letter-spacing: -1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 8px 16px;
+            color: #556677;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #ff8e72;
+        }
+
+        #btn-signin {
+            background-color: #0a2540;
+            color: white !important;
+            border-radius: 4px;
+            padding: 10px 24px !important;
+            margin-left: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        #btn-signin:hover {
+            background-color: #ff8e72;
+        }
+
+        #hero {
+            background-color: #0a2540;
+            background-image: linear-gradient(
+                rgba(10, 37, 64, 0.9),
+                rgba(10, 37, 64, 0.8)
+            ),
+            url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 160px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #hero h1 {
+            font-size: 56px;
+            color: white;
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+        }
+
+        #hero p {
+            font-size: 22px;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 35px;
+            background-color: #ff8e72;
+            color: white !important;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 4px;
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            background-color: #e67e65;
+        }
+
+        .section {
+            padding: 100px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .bg-white {
+            background-color: #ffffff;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-container {
+            text-align: center;
+            font-size: 0;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            display: inline-block;
+            width: 46%;
+            min-width: 300px;
+            margin: 0 0 40px 0;
+            vertical-align: top;
+            background-color: white;
+            padding: 40px;
+            border: 1px solid #eef1f5;
+            border-top: 4px solid #0a2540;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: 350px;
+            flex: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .card:nth-child(even) {
+            border-top-color: #ff8e72;
+        }
+
+        .single-card {
+            display: block;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            border-top-color: #0a2540;
+            min-height: auto;
+        }
+        
+        .single-card .card {
+            width: 100%;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Specific override for the pharmacy card color in single view */
+        #pharmacy .single-card .card {
+             border-top-color: #ff8e72;
+        }
+
+        .card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #0a2540;
+            font-weight: 700;
+        }
+
+        .card p {
+            color: #667788;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .card-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #f8faff;
+            color: #0a2540 !important;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #0a2540;
+            transition: all 0.3s ease;
+        }
+        .card-btn:hover {
+            background-color: #0a2540;
+            color: white !important;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 37, 64, 0.8);
+            z-index: 2000;
+        }
+
+        .modal:target {
+            display: block;
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 90%;
+            max-width: 450px;
+            margin: 60px auto;
+            padding: 50px 40px;
+            border-radius: 12px;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 32px;
+            color: #99aabb;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: #0a2540;
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+        legend {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0a2540;
+            margin-bottom: 25px;
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #0a2540;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #eef1f5;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #f8faff;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #0a2540;
+            background-color: #fff;
+        }
+
+        button.form-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: #ff8e72;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button.form-btn:hover {
+            background-color: #e67e65;
+            transform: translateY(-2px);
+        }
+
+        /* --- FOOTER STYLES --- */
+        #footer {
+            background-color: #0a2540;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 80px 20px 40px 20px;
+            font-size: 15px;
+        }
+
+        .footer-columns-container {
+            text-align: center;
+            font-size: 0;
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-column {
+            display: inline-block;
+            width: 23%;
+            margin: 0 1%;
+            vertical-align: top;
+            text-align: left;
+            font-size: 15px;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .footer-copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+    
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .nav-links {
+                justify-content: center;
+            }
+            
+            #hero h1 {
+                font-size: 36px;
+            }
+            
+            .card-container {
+                flex-direction: column;
+            }
+            
+            .card {
+                width: 100%;
+                margin-right: 0;
+            }
+            
+            .footer-columns-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-column {
+                text-align: center;
+                margin-bottom: 30px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                VitalisHub
+            </a>
+            <div class="nav-links">
+                <a href="portal.html">Portal</a>
+                <a href="#pharmacy">Pharmacy</a>
+                <a href="#care">Care</a>
+                <a href="#support">Support</a>
+                <a href="#login-modal" id="btn-signin">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="hero">
+        <h1>Healthcare for your Whole Family</h1>
+        <p>From pediatricians to veterinarians, manage every aspect of your family's health in one secure, modern hub.</p>
+        <a href="#portal" class="hero-btn">Explore Services</a>
+    </div>
+
+    <div id="portal" class="section bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Patient Portal</h2>
+            </div>
+            <div class="single-card">
+                <div class="card">
+                    <h3>Secure Access Dashboard</h3>
+                    <p>Log in to view test results instantly, manage upcoming appointments, and message your trusted providers directly in a HIPAA-compliant environment.</p>
+                    <a href="portal.html" class="card-btn">Enter Portal</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pharmacy" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Online Pharmacy</h2>
+            </div>
+            <div class="single-card">
+                <div class="card">
+                    <h3>Smart Medication Delivery</h3>
+                    <p>Order verified medicines with smart auto-refills delivered straight to your doorstep. Manage complex prescription schedules for the whole family with ease.</p>
+                    <a href="#" class="card-btn">Shop Pharmacy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="care" class="section bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Specialized Care</h2>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Veterinary Services</h3>
+                    <p>Access premium prescription food, flea/tick control, and specialized medications tailored specifically for your furry friends.</p>
+                    <a href="#" class="card-btn">Pet Care</a>
+                </div>
+                <div class="card">
+                    <h3>Human Services</h3>
+                    <p>Shop a curated selection of dermocosmetics, daily vitamins, personal care essentials, and clinically-backed supplements.</p>
+                    <a href="#" class="card-btn">Human Care</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="support" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Community & Support</h2>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                    <h3>Community Groups</h3>
+                    <p>Join moderated forums for new parents, chronic illness support, and pet owners to share experiences and advice.</p>
+                    <a href="#" class="card-btn">Find Group</a>
+                </div>
+                <div class="card">
+                    <h3>24/7 Live Support</h3>
+                    <p>Have a technical issue or a quick question? Chat live with our dedicated support agents anytime, day or night.</p>
+                    <a href="#" class="card-btn">Start Chat</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <div class="footer-columns-container">
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#portal">Patient Portal</a></li>
+                        <li><a href="#pharmacy">Online Pharmacy</a></li>
+                        <li><a href="#care">Veterinary Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>About VITALIS</h3>
+                    <ul>
+                        <li><a href="#">Our Company</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Newsroom</a></li>
+                        <li><a href="#">Investors</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">HIPAA Notice</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-copyright">
+                <p>&copy; 2025 VitalisHub.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <form action="#" method="get">
+                <fieldset>
+                    <legend>Sign In</legend>
+                    
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" name="email" placeholder="name@example.com" required>
+
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" name="password" placeholder="••••••••" required>
+                </fieldset>
+
+                <button type="submit" class="form-btn">Secure Login</button>
+
+                <p style="text-align: center; margin-top: 25px; color: #667788;">
+                    New here? <a href="#signup-modal" style="font-weight: 600; color: #0a2540;">Create Account</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <a href="#" class="close-btn">&times;</a>
+            <form action="#" method="get">
+                <fieldset>
+                    <legend>Create Account</legend>
+                    
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="John Doe">
+
+                    <label>Email Address</label>
+                    <input type="email" required placeholder="name@example.com">
+
+                    <label>Primary Interest</label>
+                    <select>
+                        <option value="human">Human Healthcare</option>
+                        <option value="pet">Veterinary Healthcare</option>
+                        <option value="both">Both</option>
+                    </select>
+                </fieldset>
+
+                <button type="submit" class="form-btn">Create Free Account</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
